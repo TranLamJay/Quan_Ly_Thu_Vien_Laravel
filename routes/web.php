@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\BookController as UserBookController;
+use App\Http\Controllers\User\OrderController;
 
 Route::get("/", function(){
 return View('User.index');
@@ -21,6 +22,13 @@ Route::middleware('auth')->group(function (){
 Route::prefix('/books')->group(function () {
     Route::get('/',[UserBookController::class, 'index']);
     Route::get('/{id}',[UserBookController::class, 'detail']);
+});
+
+Route::middleware('auth')
+    ->prefix('/orders')
+    ->name('orders.')
+    ->group(function () {
+    Route::get('/',[OrderController::class, 'index'])->name('index');
 });
 
 Route::get ('/admin/login',[LoginController::class,'index'])->name('login');

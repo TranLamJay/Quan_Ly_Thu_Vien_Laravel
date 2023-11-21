@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\OrderController;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +47,9 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('/books')->group(function (){
     Route::get('/', [BookController::class, 'all']);
+    Route::get('/by-order', [BookController::class, 'getAllBookByOrder']);
+});
+
+Route::prefix('/orders')->group(function () {
+    Route::post('/', [OrderController::class, 'create']);
 });
