@@ -58,4 +58,12 @@ class BookController extends Controller
             ->toArray();
         
     }
+
+    public function getAllBookByOrder() {
+        $books = Book::query()
+        ->where('quantity', '>', 0)
+        ->get();
+
+        return response()->json($books);
+    }
 }
