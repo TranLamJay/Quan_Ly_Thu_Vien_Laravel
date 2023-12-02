@@ -241,7 +241,7 @@ jQuery(document).on('ready', function() {
 	-------------------------------------- */
 	jQuery("#tg-locationmap").gmap3({
 		marker: {
-			address: "1600 Elizabeth St, Melbourne, Victoria, Australia",
+			address: "Street 7, Phong Phu Commune, Binh Chanh District, Ho Chi Minh City",
 			options: {
 				title: "Books Library",
 			}

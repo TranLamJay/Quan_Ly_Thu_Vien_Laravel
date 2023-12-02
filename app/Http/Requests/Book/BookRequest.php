@@ -24,7 +24,7 @@ class BookRequest extends FormRequest
         return [
             'name' => 'required',
             'content' => 'required',
-            'image' => 'required'
+            'file_upload' => 'required'
         ];
     }
 
@@ -33,7 +33,7 @@ class BookRequest extends FormRequest
         return [
             'name.required' => 'Vui lòng nhập tên sách.',
             'content.required' => 'Nội dung không được để trống.',
-            'image.required' => 'Ảnh sách không được trống.'
+            'file_upload.required' => 'Ảnh sách không được trống.'
         ];
     }
 }

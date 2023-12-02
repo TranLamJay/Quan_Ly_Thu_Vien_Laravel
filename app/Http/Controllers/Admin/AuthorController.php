@@ -24,6 +24,8 @@ class AuthorController extends Controller
     }
 
     public function index(){
-        return view("Admin.Authors.list",["title"=> "Danh sách Tác Giả"]);
+        return view("Admin.Authors.list",["title"=> "Danh sách Tác Giả",
+        'authors'=>$this->authorService->get(),
+    ]);
     }
 }

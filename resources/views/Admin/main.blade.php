@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-@include('admin/header')
+@include('Admin/header')
 </head>
 <body>
   <div class="container-scroller">
@@ -52,7 +52,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      @include('admin.sidebar')
+      @include('Admin.sidebar')
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -61,7 +61,7 @@
               <h4 class="font-weight-bold text-dark">Page Admin</h4>
               {{-- <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p> --}}
 
-                @include('admin.alert')
+                @include('Admin.alert')
                 @yield('content')
 
 
@@ -71,7 +71,7 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        @include('admin/footer')
+        @include('Admin/footer')
         
         <!-- partial -->
       </div>

@@ -11,5 +11,9 @@ class AuthorService{
             'id'=>(int) $request->input('id'),
             'name'=>(string) $request->input('name'),
         ]);
-}
+    }
+
+    public function get(){
+        return Author::orderByDesc('id')->paginate(10);
+    }
 }

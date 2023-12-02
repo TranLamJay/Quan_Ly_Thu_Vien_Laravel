@@ -9,11 +9,11 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\BookController as UserBookController;
+use App\Http\Controllers\User\AuthorController as UserAuthorController;
 use App\Http\Controllers\User\OrderController;
 
-Route::get("/", function(){
-return View('User.index');
-});
+/////////////User
+Route::get('/',[UserBookController::class, 'index']);
 Route::middleware('auth')->group(function (){
     Route::prefix('user')->group(function(){
     });
@@ -24,13 +24,29 @@ Route::prefix('/books')->group(function () {
     Route::get('/{id}',[UserBookController::class, 'detail']);
 });
 
+Route::get('/contact',function () {
+    return view('User/contact');
+});
+
+Route::get('/about',function () {
+    return view('User/about');
+});
+
+Route::prefix('/authors')->group(function () {
+    Route::get('/',[UserAuthorController::class, 'index']);
+    Route::get('/author-detail',[UserAuthorController::class, 'detail']);
+});
+
 Route::middleware('auth')
     ->prefix('/orders')
     ->name('orders.')
     ->group(function () {
     Route::get('/',[OrderController::class, 'index'])->name('index');
+    //Route::get('/',[UserBookController::class,'cart'])->name('add.to.cart');
 });
 
+
+//////////////Admin
 Route::get ('/admin/login',[LoginController::class,'index'])->name('login');
 Route::post ('/admin/login/store',[LoginController::class,'store']);
 
@@ -75,9 +91,7 @@ Route::middleware('auth')->group(function () {
             Route::get ('edit/{category}', [BookController::class,'show']);
             Route::post ('edit/{category}', [BookController::class,'update']);
             Route::get('destroy',[BookController::class,'destroy']);
-        });
-
-        Route::post('upload/{services}',[UploadController::class,'store']);
+        });   
     });
 });
 

@@ -19,7 +19,7 @@ class OrderController extends Controller
         // mở ra transaction để phòng lỗi thì mình quay lại không thêm vào sql
         DB::beginTransaction();
 
-        // tạo order thôi
+        // tạo order
         $order = CallCard::query()->create([
             'user_name' => $data['user_name'],
             'user_email' => $data['user_email'],

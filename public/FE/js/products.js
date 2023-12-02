@@ -30,11 +30,11 @@ const renderProducts = async (data = []) => {
                     <figure class="tg-featureimg">
                         <div class="tg-bookimg">
                             <div class="tg-frontcover">
-                                <img src="${product.image == '' ? 'FE/images/books/img-07.jpg' : product.image}"
-                                    alt="image ${product.name}">
+                                <img src="{{ asset('/uploads') }}/{{ $product->image }}"
+                                    width = "100" alt="image ${product.name}">
                             </div>
                             <div class="tg-backcover">
-                                <img src="${product.image == '' ? 'FE/images/books/img-07.jpg' : product.image}"
+                                <img src="{{ asset('/uploads') }}/{{ $product->image }}"
                                     alt="image ${product.name}">
                             </div>
                         </div>
@@ -47,6 +47,9 @@ const renderProducts = async (data = []) => {
                             <h3><a href="/books/${product.id}">${product.name}</a></h3>
                         </div>
                         <span class="tg-bookwriter">${product.language.type_languages}</span>
+                        <a class="tg-btn tg-btnstyletwo tg-active" href="{{ route('add.to.cart', $book->id)}}">
+						    <i class="fa fa-shopping-basket"></i> <em>Add To Basket</em>
+                        </a>
                     </div>
                 </div>
             </div>

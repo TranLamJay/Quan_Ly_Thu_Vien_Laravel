@@ -814,6 +814,8 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 	line-height: inherit;
 }
 .tg-userlogin {
+	margin-top: -25px;
+    margin-right: -30%;
 	float: right;
 	padding: 10px 20px;
 	background: rgba(0, 0, 0, 0.03);
@@ -1096,6 +1098,7 @@ body.tg-comingsoonpage .tg-wrapper{overflow:visible;}
 }
 .tg-navigation > ul {
 	width:100%;
+	margin-left: 200px;
 	float:left;
 	position: relative;
 	display: inline-block;
@@ -2863,7 +2866,7 @@ li.menu-item-has-mega-menu { position: static; }
 			Inner Banner Style					
 ============================================= */
 .tg-innerbanner{
-	height:300px;
+	height:250px;
 	text-align:center;
 	-webkit-box-align: center;
 	-ms-flex-align: center;

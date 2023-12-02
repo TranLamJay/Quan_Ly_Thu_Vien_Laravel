@@ -8797,6 +8797,7 @@ img {
 }
 
 svg {
+  width: 10px;
   overflow: hidden;
   vertical-align: middle;
 }
@@ -18606,6 +18607,7 @@ textarea:visited {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  margin-bottom: 10px;
 }
 
 .btn.active.focus, .ajax-upload-dragdrop .active.focus.ajax-file-upload,

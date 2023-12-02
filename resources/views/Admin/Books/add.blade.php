@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="pt-3" id='themsach' method="POST" action="">
+<form class="pt-3" id='themsach' method="POST" action="" enctype="multipart/form-data">
     <div class='form-group'>
         <label for='name'>Tên Sách</label>
         <input type='text' name='name' class='form-control' value="{{ old('name') }}" id='name' placeholder='Tên Sách'>
@@ -15,20 +15,20 @@
         <input type="number" name="quantity" class="form-control input-number" id='quantity' value="{{ old('quantity') }}" min="1" max="999">
     </div>
     <div class='form-group'>
-        <label for='date_add'>Ngày Nhập Sách</label>
-        <input type='date' name='date_add' class='form-control' id='date_add' value="{{ old('date_add') }}">
+        <label for='author'>Tên Tác Giả Chính</label>
+        <input type='text' name='author' class='form-control' id='author' value="{{ old('author') }}">
     </div>
+    {{-- <div class='form-group'>
+      <label for='author_phu'>Tên Tác Giả Phụ</label>
+      <input type='text' name='author_phu' class='form-control' id='author_phu' value="--{{ old('author_phu') }}">
+    </div> --}}
     <div class='form-group'>
         <label for='content'>Nội Dung</label>
         <textarea class="form-control" name='content' id="content" value="{{ old('content') }}" placeholder='Nội Dung'></textarea>
     </div>
     <div class="form-group">
-        <label for='image'>Upload Hình</label>
-        <input type="file" name='image' class="form-control" id='upload' value="{{ old('image') }}">
-        <div id="image_show">
-
-        </div>
-        <input type="hidden" name="file" id="file">
+        <label for='file_upload'>Upload Hình</label>
+        <input type="file" name='file_upload' class="form-control"  value="{{ old('file_upload') }}">
     </div>
     <div class="form-group">
         <label for='publishing_year'>Năm Sản Xuất</label>

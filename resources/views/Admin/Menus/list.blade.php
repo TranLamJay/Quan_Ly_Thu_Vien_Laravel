@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('Admin.main')
 
 @section('content')
 <div class="table-responsive">
@@ -13,7 +13,9 @@
         <tr>
         {!! \App\Helpers\Helper::category($categories) !!}
           </tr>
+          
       </tbody>
     </table>
   </div>
+  {{ $categories->links()}}
 @endsection

@@ -6,13 +6,17 @@
 
 @section('content')
 <form class="pt-3" method="POST" action="">
-    <div class ='form-group'>
-        <label for='id'>Id</label>
-        <input  type='text' name='id' class='form-control' id='id' placeholder='Id'>
-    </div>
     <div class='form-group'>
         <label for='name'>Tên Tác Giả</label>
         <input  type='text' name='name' class='form-control' id='name' placeholder='Tên Tác Giả'>
+    </div>
+    <div class='form-group'>
+        <label for='roles'>Vai Trò</label>
+        <input  type='text' name='roles' class='form-control' id='roles' placeholder='Vai Trò'>
+    </div>
+    <div class='form-group'>
+        <label for='name_book'>Tên Sách</label>
+        <input  type='text' name='name_book' class='form-control' Tên='name_book' placeholder='Tên Sách'>
     </div>
     <button type='submit' class='btn btn-primary mr-2'>Save</button>
     <a href='/admin/authors/list' type='submit' class='btn btn-light'>Cancel</a>
