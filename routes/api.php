@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
 use App\Models\Role;
 
@@ -52,4 +53,11 @@ Route::prefix('/books')->group(function (){
 
 Route::prefix('/orders')->group(function () {
     Route::post('/', [OrderController::class, 'create']);
+});
+
+Route::prefix('/carts')->group(function () {
+    Route::post('/add', [CartController::class, 'addProductToCart']);
+    Route::get('/count', [CartController::class, 'countProductIncart']);
+    Route::get('/', [CartController::class, 'getProductIncart']);
+    Route::delete('/{cartDetailId}',  [CartController::class, 'removeProductInCart']);
 });

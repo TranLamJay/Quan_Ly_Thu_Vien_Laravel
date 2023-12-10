@@ -21,7 +21,7 @@ class BookController extends Controller
         
         // lấy ra tất cả các sách dựa trên fillter
         $books = $this->findAllBook($nameFilter, $categoryFilter, $producerFilter, $authorFilter, $languageFilter);
-        return response()->json($books); 
+        return response()->json($books);
     }
 
     public function findAllBook($nameFilter, $categoryFilter, $producerFilter, $authorFilter, $languageFilter) {

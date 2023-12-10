@@ -147,4 +147,3 @@
 <script src="FE/js/appear.js"></script>
 <script src="FE/js/gmap3.js"></script>
 <script src="FE/js/main.js"></script>
-<script src="{{ asset('FE/js/products.js') }}" type="module"></script>

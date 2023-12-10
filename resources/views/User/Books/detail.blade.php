@@ -40,7 +40,7 @@
 															<li><span>Nhà xuất bản: {{ $book->producer->name }}</span></li>
 														</ul>
 														
-														<a class="tg-btn tg-active tg-btn-lg" href="{{ route('orders.index')}}">Mượn sách</a>
+														{{-- <button class="tg-btn tg-active tg-btn-lg">Thêm vào giỏ hàng</button> --}}
 													</div>
 												</div>
 											</div>

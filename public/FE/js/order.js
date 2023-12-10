@@ -1,81 +1,57 @@
-const addBookBtn = document.querySelector('.book-box__add_book')
+import { renderCountCart } from "./helper.js"
+
 const orderBookBtn = document.querySelector('.btn_order_book')
+const userId = document.querySelector('.user_id')
+const userName = document.querySelector('.user_name')
+const userEmail = document.querySelector('.user_email')
+const endDate = document.querySelector('.end_date')
+const form = document.querySelector('#form')
 
-// kéo products về từ api
-const getBooks = async () => {
-    const response = await fetch(`/api/books/by-order`);
-    if (!response.ok) {
-        console.log('lỗi');
-        return
-    }
-    return await response.json();
+const setCountCart = async() => {
+    const userIdVal = userId.value
+    renderCountCart(userIdVal)
 }
 
-let BOOKS
+const renderBook = async() => {
+    const userIdVal = userId.value
+    const response = await fetch(`api/carts?user_id=${userIdVal}`)
 
-// Thêm một ô chọn sách.
-const addBookToBox = () => {
-    const bookHtml = `
-        <div class="row book-box__item" style="margin-top: 12px">
-            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                <select name="book_item_name"
-                    class="form-control book_item_name">
-                        ${
-                            BOOKS.map((book) =>
-                            {
-                                return  `
-                                <option value="${book.id}" data-count="${book.quantity}">
-                                    ${book.name} ( còn ${book.quantity} cuốn)
-                                </option>
-                            `}).join('')
-                        }
-                </select>
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <input type="number" name="book_item_quantity"
-                class="form-control book_item_quantity" placeholder="Nhập số lượng" value="1" min="1">
-            </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                <button type="button"
-                    class="book-box__remove_book btn btn-danger">
-                    xóa
-                </button>
-            </div>
-        </div>
-    `
-    const bookBox = document.querySelector('.book-box__container')
-    const bookItem = document.createElement('div')
-    bookItem.innerHTML = bookHtml
+    const data = await response.json()
 
-    bookBox.appendChild(bookItem)
+    const dataHtml = data.map(item => `
+        <tr>
+            <td>
+                <img src="/uploads/${item.image}" style="with: 60px; height: 60px" />
+            </td>
+            <td>
+                ${item.name}
+            </td>
+            <td>
+                1
+            </td>
+            <td>
+                <button class="btn btn-danger book-box__remove_book" data-id="${item.id}" type="button">xóa</button>
+            </td>
+        </tr>
+    `).join('')
 
+    const bookBoxCtn = document.querySelector('.book-box__container')
+    bookBoxCtn.innerHTML = dataHtml
     setRemoveBook()
-    setOnInputCount()
 }
 
-// set sự kiện thay đổi giá trị số lượng
-const setOnInputCount = () => {
-    const inputCounts = document.querySelectorAll('.book_item_quantity')
 
-    inputCounts.forEach(inputCount => {
-        inputCount.onchange = (e) => {
-            let bookItem = e.currentTarget;
-            while (!bookItem || !bookItem.classList.contains("book-box__item")) {
-                bookItem = bookItem.parentElement
-            }
-            const bookItemSelect = bookItem.querySelector('.book_item_name')
-            const bookItemSelected = bookItemSelect.options[bookItemSelect.selectedIndex]
-            const value = +e.currentTarget.value
-            const countData = +bookItemSelected.dataset.count
-            if (value < 1 || value > countData) {
-                alert('số lượng sách nằm ngoài giá trị hiện có')
-                e.currentTarget.value = 1
-                e.currentTarget.focus()
-                return
-            }
+const setReturnDate = () => {
+    const returnDate = document.querySelector('.return_date');
+    const today = new Date();
+    const futureDate = new Date();
+    futureDate.setDate(today.getDate() + 14);
 
-        }
-    })
+    // Chuyển đổi ngày thành chuỗi có định dạng YYYY-MM-DD (định dạng của input type="date")
+    const formattedFutureDate = futureDate.toISOString().split('T')[0];
+
+    returnDate.value = formattedFutureDate;
+
 }
 
 // set sự kiện xóa một cuốn sách
@@ -83,37 +59,29 @@ const setRemoveBook = () => {
     const removeBookBtns = document.querySelectorAll('.book-box__remove_book')
 
     removeBookBtns.forEach(removeBookBtn => {
-        removeBookBtn.onclick = (e) => {
-            let bookItem = e.currentTarget;
-            while (!bookItem || !bookItem.classList.contains("book-box__item")) {
-                bookItem = bookItem.parentElement
+        removeBookBtn.onclick = async (e) => {
+            const trEle = e.currentTarget.parentElement.parentElement
+
+            const cartDetailId = e.currentTarget.dataset.id
+
+            const response = await fetch(`/api/carts/${cartDetailId}`, {
+                method: 'delete'
+            })
+
+            const data = await response.json()
+
+            if (response.ok) {
+                trEle.remove()
+                setCountCart()
             }
-            const countItem = document.querySelectorAll('.book-box__item').length
-            if (countItem == 1) {
-                alert('không được xóa hết sách')
-                return
-            }
-            bookItem.remove()
+
+            alert(data)
         }
     })
 }
 
-// set sự kiện thêm một cuốn sách
-const setAddBook = () => {
-    addBookBtn.onclick = () => {
-        addBookToBox()
-    }
-}
-
 // hàm xử lý đặt hàng
 const orderBook = async() => {
-    const bookItems = document.querySelectorAll('.book-box__item')
-    const userId = document.querySelector('.user_id')
-    const userName = document.querySelector('.user_name')
-    const userEmail = document.querySelector('.user_email')
-    const endDate = document.querySelector('#end_date')
-    const form = document.querySelector('#form')
-
 
     const data = new FormData()
 
@@ -122,27 +90,6 @@ const orderBook = async() => {
     data.append('user_email', userEmail.value)
     data.append('end_date', endDate.value)
     data.append('form', form.value)
-
-    // Lặp qua danh sách các cuốn sách
-    const books = []
-    bookItems.forEach(bookItem => {
-        const id = bookItem.querySelector('.book_item_name').value
-        const quantity = bookItem.querySelector('.book_item_quantity').value
-        const bookTemp = {
-            id: +id,
-            quantity: +quantity
-        }
-        // tìm cuốn sách, nếu có rồi thì thay đổi giá trị
-        const existBookIndex = books.findIndex(book => book.id == bookTemp.id);
-        if (existBookIndex !== -1) {
-            books[existBookIndex].quantity = books[existBookIndex].quantity + bookTemp.quantity
-            return
-        }
-        books.push(bookTemp)
-    })
-
-    data.append('books', JSON.stringify(books))
-
     // thực hiện post phiếu mượn lên cho be xử lý
     try {
         const response = await fetch('/api/orders', {
@@ -173,9 +120,9 @@ const setOrderBook = () => {
 }
 
 const main = async() => {
-    BOOKS = await getBooks()
-    addBookToBox()
-    setAddBook()
+    setReturnDate()
+    setCountCart()
+    renderBook()
     setOrderBook()
 }
 

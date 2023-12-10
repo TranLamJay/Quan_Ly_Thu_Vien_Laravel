@@ -33,7 +33,21 @@ function setURLParameter(params) {
     window.history.pushState({}, '', url);
 }
 
+const renderCountCart = async(userId) => {
+    const countBookInCartEle = document.querySelector('.count-book-in-cart')
+
+    if (!userId) {
+        countBookInCartEle.innerText = 0
+        return
+    }
+    const response = await fetch(`/api/carts/count?user_id=${userId}`)
+    const data = await response.json()
+
+    countBookInCartEle.innerText = data
+}
+
 export {
     getURLParameter,
-    setURLParameter
+    setURLParameter,
+    renderCountCart,
 }
