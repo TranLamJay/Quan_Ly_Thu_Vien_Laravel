@@ -32,7 +32,6 @@ class OrderRequest extends FormRequest
                 'date'
             ],
             'form' => 'required',
-            'books' => 'required',
             'user_id' => 'required'
         ];
     }

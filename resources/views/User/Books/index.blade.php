@@ -6,7 +6,9 @@
 	
 </head>
 <body class="tg-home tg-homeone">
-
+	<div id="user-id-constant" @auth
+		data-id="{{ auth()->id() }}"
+	@endauth></div>
 	<div id="tg-wrapper" class="tg-wrapper tg-haslayout">
 		<!--************************************
 				Header Start
@@ -208,6 +210,8 @@
 				Footer Start
 		*************************************-->
 		@include('User/footer')
+		
+		<script src="{{ asset('FE/js/products.js') }}" type="module"></script>
 		<!--************************************
 				Footer End
 		*************************************-->

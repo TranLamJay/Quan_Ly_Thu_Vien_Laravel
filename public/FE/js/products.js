@@ -1,4 +1,4 @@
-import { getURLParameter, setURLParameter } from "./helper.js";
+import { getURLParameter, renderCountCart, setURLParameter } from "./helper.js";
 
 const productContainerEle = document.querySelector('.tg-products .tg-productgrid');
 
@@ -30,11 +30,11 @@ const renderProducts = async (data = []) => {
                     <figure class="tg-featureimg">
                         <div class="tg-bookimg">
                             <div class="tg-frontcover">
-                                <img src="{{ asset('/uploads') }}/{{ $product->image }}"
+                                <img src="uploads/${product.image}"
                                     width = "100" alt="image ${product.name}">
                             </div>
                             <div class="tg-backcover">
-                                <img src="{{ asset('/uploads') }}/{{ $product->image }}"
+                                <img src="uploads/${product.image}"
                                     alt="image ${product.name}">
                             </div>
                         </div>
@@ -47,9 +47,9 @@ const renderProducts = async (data = []) => {
                             <h3><a href="/books/${product.id}">${product.name}</a></h3>
                         </div>
                         <span class="tg-bookwriter">${product.language.type_languages}</span>
-                        <a class="tg-btn tg-btnstyletwo tg-active" href="{{ route('add.to.cart', $book->id)}}">
+                        <btn class="tg-btn tg-btnstyletwo tg-active add-cart-btn" data-prd="${product.id}" style="cursor: pointer">
 						    <i class="fa fa-shopping-basket"></i> <em>Add To Basket</em>
-                        </a>
+                        </btn>
                     </div>
                 </div>
             </div>
@@ -102,6 +102,52 @@ const setOnInputMenuSearch = async () => {
 const showProducts = async (params) => {
     const data = await getProducts(params)
     renderProducts(data.data)
+    bindingEventAddCartBtn()
+}
+
+// hàm xử lý sự kiện cho addCartBtn
+const bindingEventAddCartBtn = () => {
+    const addCartBtns = document.querySelectorAll('.add-cart-btn')
+    addCartBtns.forEach(addCartBtn => {
+        addCartBtn.onclick = async(e) => {
+            const userIdConstant = document.getElementById('user-id-constant')
+            const userId = userIdConstant.dataset.id
+            if (!userId) {
+                alert('Bạn chưa đăng nhập')
+                location.href = '/admin/login'
+                return
+            }
+            const productId = e.currentTarget.dataset.prd
+
+            try {
+                const response = await fetch('/api/carts/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'book_id': productId,
+                        'user_id': userId,
+                    })
+                })
+
+                const data = await response.json()
+                
+                alert(data);
+                if (response.ok) {
+                    setCountCart()
+                }
+            } catch (error) {
+                alert("lỗi: " + error)
+            }
+        }
+    })
+}
+
+const setCountCart = async() => {
+    const userIdConstant = document.getElementById('user-id-constant')
+    const userId = userIdConstant.dataset.id
+    renderCountCart(userId)
 }
 
 const main = async () => {
@@ -110,5 +156,6 @@ const main = async () => {
     setOnClickMenuItem()
     setOnInputMenuSearch()
     setOnClickResetBtn()
+    setCountCart()
 }
 main()

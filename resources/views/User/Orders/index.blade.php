@@ -50,8 +50,8 @@
                                                 placeholder="email">
 										</div>
 										<div class="form-group">
-                                            <label for="end_date">Ngày trả</label>
-											<input type="date" name="end_date" id="end_date" class="form-control" placeholder="Last Name*">
+                                            <label>Ngày trả</label>
+											<input type="date" class="form-control end_date return_date" readonly>
 										</div>
                                         <div class="form-group">
                                             <label for="form">Hình thức</label>
@@ -61,13 +61,17 @@
                                             </select>
 										</div>
                                         <div class="book-box">
-                                            <button type="button"
-                                                class="book-box__add_book btn btn-info" style="margin: 12px">
-                                                Thêm sách
-                                            </button>
-                                            <div class="book-box__container">
+											<table class="table">
+												<tr>
+													<th></th>
+													<th>Sản phẩm</th>
+													<th>Số lượng</th>
+													<th>Thao tác</th>
+												</tr>
+												<tbody class="book-box__container">
 
-                                            </div>
+												</tbody>
+											</table>
                                         </div>
 										<div class="form-group" style="margin-top: 12px">
 											<button type="button" class="tg-btn tg-active btn_order_book">Mượn sách</button>
