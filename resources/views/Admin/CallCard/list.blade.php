@@ -1,6 +1,15 @@
 @extends('Admin.main')
 
 @section('content')
+@if (session('status'))
+				<div class="alert alert-success alert-dismissible">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					{{ session('status') }}
+				</div>
+				@php
+					session()->forget('status')
+				@endphp
+			@endif
 <div class="table-responsive">
     <table class="table">
       <thead>
@@ -28,9 +37,16 @@
             <td>
                 <a href="/admin/callCards/list/detail/{{  $callCard->id  }}" name = "detail" value = "detail" class="btn btn-success">
                     <b class="fas fa-eye btn-icon-prepend">Chi tiết</b></a>
-                <a href="/admin/callCards/edit/{{  $callCard->id  }}" name = "edit" value = "edit" class="btn btn-success">
-                <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
-
+                
+                @if ($callCard->extend !== 0)
+                  <select class="form-control select-extend" data-id="{{ $callCard->id }}">
+                    <option value="1">Chờ gia hạn</option>
+                    <option value="2">Cho phép gia hạn</option>
+                    <option value="-1" @if ($callCard->extend === -1)
+                        selected
+                    @endif>Không Cho phép gia hạn</option>
+                  </select>
+                @endif
                 <a href="/admin/callCards/destroy" onclick="removeRow('. $callCard->id .', \'/admin/callCards/destroy\')" name = "delete" value = "delete" class="btn btn-danger">
                 <b class="mdi mdi-alert btn-icon-prepend">Xóa</b></a>
             </td>
@@ -40,5 +56,6 @@
       </tbody>
     </table>
   </div>
+  <script src="{{ asset('FE/js/callcardAdmin.js') }}"></script>
   {{-- {{ $callCards->links() }} --}}
 @endsection

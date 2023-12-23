@@ -118,7 +118,7 @@
                                             <li><a href="/authors/author-detail">Author Detail</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="products.html">My Book</a></li>
+                                    <li><a href="{{ route('my_book') }}">My Book</a></li>
                                     {{-- <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Latest News</a>
                                         <ul class="sub-menu">
