@@ -18,7 +18,8 @@ class CallCard extends Model
         "form",
         "user_id",
         'user_name',
-        'user_email'
+        'user_email',
+        'extend'
     ]);
 
     public $timestamps = false;
