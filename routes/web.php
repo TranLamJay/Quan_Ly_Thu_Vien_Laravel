@@ -10,13 +10,14 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\AuthorController as UserAuthorController;
+use App\Http\Controllers\User\CallCardController as UserCallCardController;
 use App\Http\Controllers\User\OrderController;
 
 /////////////User
 Route::get('/',[UserBookController::class, 'index']);
-Route::middleware('auth')->group(function (){
-    Route::prefix('user')->group(function(){
-    });
+Route::middleware('auth')->group(function () {
+    Route::get('/my-book', [UserCallCardController::class, 'myBook'])->name('my_book');
+    Route::get('/request-extend/{id}', [UserCallCardController::class, 'requestExtend'])->name('requestExtend');
 });
 
 Route::prefix('/books')->group(function () {
@@ -99,6 +100,7 @@ Route::middleware('auth')->group(function () {
             Route::get ('edit/{book}', [CallCardController::class,'show']);
             Route::post ('edit/{book}', [CallCardController::class,'update']);
             Route::get('destroy',[CallCardController::class,'destroy']);
+            Route::get('handle-extend/{id}', [CallCardController::class, 'handleExtend']);
         });   
     });
 });
