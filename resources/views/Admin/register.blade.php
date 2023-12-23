@@ -34,7 +34,7 @@
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
-                        <i class="mdi mdi-account-outline text-primary"></i>
+                        <i class="icon-mail text-primary"></i>
                       </span>
                     </div>
                     <input type="email" name="email" class="form-control form-control-lg border-left-0" id="email" placeholder="Email">
@@ -51,7 +51,28 @@
                     <input type="password" name="password" class="form-control form-control-lg border-left-0" id="password" placeholder="Password">                        
                   </div>
                 </div>
-                
+                <div class="form-group">
+                  <label for="diachi">Địa chỉ</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="icon-map text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="diachi" class="form-control form-control-lg border-left-0" id="diachi" placeholder="Địa chỉ">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cccd">Căn cước công dân</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="mdi mdi-account-outline text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="cccd" class="form-control form-control-lg border-left-0" id="cccd" placeholder="CCCD">
+                  </div>
+                </div>
                 <div class="my-3">
                   <button style="submit" class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" >Register</button>
                 </div>

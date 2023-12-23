@@ -26,8 +26,8 @@
             <td>{{ $callCard->user_name }}</td>
             <td>{{ $callCard->user_email }}</td>
             <td>
-                <a href="/admin/callCards/list/detail/{{  $callCard->id  }}" name = "detail" value = "detail" class="btn btn-success">
-                    <b class="fas fa-eye btn-icon-prepend">Chi tiết</b></a>
+                <a href="/admin/callCards/list/detail/{{  $callCard->id  }}" name = "detail" value = "detail"class=" btn btn-info btn-icon-text">
+                    <b class="#">Chi tiết</b></a>
                 <a href="/admin/callCards/edit/{{  $callCard->id  }}" name = "edit" value = "edit" class="btn btn-success">
                 <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
 
