@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\CallCardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
@@ -90,6 +91,14 @@ Route::middleware('auth')->group(function () {
             Route::get ('edit/{book}', [BookController::class,'show']);
             Route::post ('edit/{book}', [BookController::class,'update']);
             Route::get('destroy',[BookController::class,'destroy']);
+        });   
+
+        Route::prefix('callCards')->group(function () {
+            Route::get ('list', [CallCardController::class,'index']);
+            Route::get ('list/detail/{callCard}', [CallCardController::class,'detail']);
+            Route::get ('edit/{book}', [CallCardController::class,'show']);
+            Route::post ('edit/{book}', [CallCardController::class,'update']);
+            Route::get('destroy',[CallCardController::class,'destroy']);
         });   
     });
 });

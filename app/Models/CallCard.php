@@ -22,4 +22,15 @@ class CallCard extends Model
     ]);
 
     public $timestamps = false;
+
+    public function User(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public function detail(){
+        return $this->hasOne(DetailCallCard::class, 'id_call_card', 'id');
+    }
+    
 }
+//hasOne->mối quan hệ 1:1
+//belongsTo->Mối quan hệ n:1
+//hasMany->mối quan hệ 1:n

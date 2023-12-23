@@ -18,4 +18,8 @@ class DetailCallCard extends Model
     ]);
 
     public $timestamps = false;
+
+    public function book(){
+        return $this->belongsTo(Book::class, 'id_book', 'id');
+    }
 }

@@ -69,6 +69,13 @@
             <li class="nav-item"> <a class="nav-link" href="/admin/books/list">List</a></li>
           </ul>
         </div>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/callCards/list">
+          <i class="icon-image menu-icon"></i>
+          <span class="menu-title">CallCard</span>
+        </a>
+      </li></span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="pages/forms/basic_elements.html">
