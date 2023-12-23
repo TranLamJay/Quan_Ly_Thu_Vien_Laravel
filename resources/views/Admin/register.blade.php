@@ -17,7 +17,18 @@
               </div>
               <h4>QUẢN LÝ THƯ VIỆN</h4>
               @include('Admin.alert')
-              <form class="pt-3" action="/login/store" method="post">
+              <form class="pt-3" action="/register/store" method="post">
+                <div class="form-group">
+                    <label for="name">UserName</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend bg-transparent">
+                        <span class="input-group-text bg-transparent border-right-0">
+                          <i class="mdi mdi-account-outline text-primary"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="name" class="form-control form-control-lg border-left-0" id="name" placeholder="UserName">
+                    </div>
+                  </div>
                 <div class="form-group">
                   <label for="exampleInputEmail">Email</label>
                   <div class="input-group">
@@ -26,7 +37,7 @@
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" name="email" class="form-control form-control-lg border-left-0" id="email" placeholder="Email">
+                    <input type="email" name="email" class="form-control form-control-lg border-left-0" id="email" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -40,17 +51,9 @@
                     <input type="password" name="password" class="form-control form-control-lg border-left-0" id="password" placeholder="Password">                        
                   </div>
                 </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" name= "remember" class="form-check-input">
-                      Keep me signed in
-                    </label>
-                  </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
+                
                 <div class="my-3">
-                  <button class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" >LOGIN</button>
+                  <button style="submit" class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" >Register</button>
                 </div>
                 <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
@@ -62,9 +65,7 @@
                     Google
                   </button>
                 </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="{{ route('register') }}" class="text-primary">Create</a>
-                </div>
+                
                 @csrf
               </form>
             </div>

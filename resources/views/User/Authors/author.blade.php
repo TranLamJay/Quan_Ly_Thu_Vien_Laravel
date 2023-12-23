@@ -93,20 +93,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-								<div class="tg-author">
-									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-06.jpg" alt="image description"></a></figure>
-									<div class="tg-authorcontent">
-										<h2><a href="javascript:void(0);">Jude Morphew</a></h2>
-										<span>21,658 Published Books</span>
-										<ul class="tg-socialicons">
-											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-											<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							
 							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 								<div class="tg-author">
 									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-29.jpg" alt="image description"></a></figure>
@@ -123,9 +110,9 @@
 							</div>
 							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 								<div class="tg-author">
-									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-08.jpg" alt="image description"></a></figure>
+									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-32.jpg" alt="image description"></a></figure>
 									<div class="tg-authorcontent">
-										<h2><a href="javascript:void(0);">Jude Morphew</a></h2>
+										<h2><a href="javascript:void(0);">Tố Hữu</a></h2>
 										<span>21,658 Published Books</span>
 										<ul class="tg-socialicons">
 											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
@@ -140,20 +127,6 @@
 									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-20.jpg" alt="image description"></a></figure>
 									<div class="tg-authorcontent">
 										<h2><a href="javascript:void(0);">tran lam</a></h2>
-										<span>21,658 Published Books</span>
-										<ul class="tg-socialicons">
-											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-											<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-								<div class="tg-author">
-									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-15.jpg" alt="image description"></a></figure>
-									<div class="tg-authorcontent">
-										<h2><a href="javascript:void(0);">Jude Morphew</a></h2>
 										<span>21,658 Published Books</span>
 										<ul class="tg-socialicons">
 											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
@@ -205,21 +178,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-								<div class="tg-author">
-									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-32.jpg" alt="image description"></a></figure>
-									<div class="tg-authorcontent">
-										<h2><a href="javascript:void(0);">Tố Hữu</a></h2>
-										<span>21,658 Published Books</span>
-										<ul class="tg-socialicons">
-											<li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-											<li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+							
+							{{-- <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 								<div class="tg-author">
 									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-18.jpg" alt="image description"></a></figure>
 									<div class="tg-authorcontent">
@@ -274,7 +234,7 @@
 										</ul>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 							<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
 								<div class="tg-author">
 									<figure><a href="javascript:void(0);"><img src="/FE/images/author/imag-28.jpg" alt="image description"></a></figure>

@@ -5,36 +5,32 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Tên Người Dùng</th>
           <th>Email</th>
           <th>Hình</th>
           <th>Ngày Sinh</th>
           <th>Giới Tính</th>
-          <th>Địa Chỉ</th>
+          {{-- <th>Địa Chỉ</th> --}}
           <th>CCCD</th>
           <th>Trạng thái</th>
           <th>Vai Trò</th>
-          <th>Edit </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-        <td>{$nhanvien['id']}</td>
-        <td>{$nhanvien['ten_nv']}</td>
-        <td>{$nhanvien['ngay_sinh']}</td>
-        <td>{$nhanvien['gioi_tinh']}</td>
-        <td>{$nhanvien['dia_chi']}</td>
-        <td>{$nhanvien['email']}</td>
-        <td>{$nhanvien['cccd']}</td>
-        <td>{$nhanvien['cccd']}</td>
+          <td>TranLam</td>
+          <td>laimh1221@gmail.com</td>
+          <td></td>
+          <td>26-07-2001</td>
+          <td>Nam</td>
+          <td>121212112</td>
         <td>
           <label class="toggle-switch toggle-switch-success">
           <input type="checkbox" checked>
           <span class="toggle-slider round"></span>
           </label>   
         </td>
-        <td>{$nhanvien['vaitro']}</td>
+        <td>Thủ Thư</td>
         <td>
           
           <form method = 'POST' action = 'admin.add'>

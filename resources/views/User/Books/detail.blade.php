@@ -32,7 +32,7 @@
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 												<div class="tg-postbook">
-													<figure class="tg-featureimg"><img src="{{asset('FE/images/books/img-07.jpg')}}" alt="image description"></figure>
+													<figure class="tg-featureimg"><img src="{{url('/uploads') }}/{{ $book->image}}" width="300" alt="{{ $book->name }}"></figure>
 													<div class="tg-postbookcontent">
 														<ul class="tg-delevrystock">
 															<li><span>Số lượng: {{ $book->quantity }}</span></li>
@@ -40,7 +40,8 @@
 															<li><span>Nhà xuất bản: {{ $book->producer->name }}</span></li>
 														</ul>
 														
-														{{-- <button class="tg-btn tg-active tg-btn-lg">Thêm vào giỏ hàng</button> --}}
+														<button class="tg-btn tg-active tg-btn-lg" data-prd="{{ $book->id }}}"><i class="fa fa-shopping-basket"></i>
+															Thêm vào giỏ hàng</button>
 													</div>
 												</div>
 											</div>

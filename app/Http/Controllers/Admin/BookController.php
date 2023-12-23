@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\BookRequest;
 use App\Http\Services\Book\BookService;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -51,9 +52,15 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view("Admin.Books.edit",["title"=> "Chỉnh sửa Sách" . $book->id,
+        'book'=> $book,
+        'category_id'=> $this->bookService->getCategory(),
+        'producer_id'=> $this->bookService->getProducer(),
+        'language_id'=> $this->bookService->getLanguage(),
+        'author_id'=> $this->bookService->getAuthor(),
+    ]);
     }
 
     /**
@@ -67,9 +74,10 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $this->bookService->update($request, $book);
+        return redirect('/admin/books/list');
     }
 
     /**

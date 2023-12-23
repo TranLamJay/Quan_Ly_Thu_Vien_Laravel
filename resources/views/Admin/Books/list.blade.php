@@ -26,16 +26,16 @@
             <td>{{ $book->quantity }}</td>
             <td>{{ $book->date_add }}</td>
             {{-- <td>{!! $book->content !!}</td> --}}
-            <td><img src="{{ url('public/uploads') }}/{{ $book->image }}" width="50" alt=""></td>
+            <td><img src="{{ url('/uploads') }}/{{ $book->image }}" width="50" alt=""></td>
             <td>{{ $book->publishing_year }}</td>
             <td>{{ $book->category->name }}</td>
             <td>{!! $book->producer->name !!}__{!! $book->producer->address !!}</td>
             <td>{{ $book->language->type_languages }}</td>
             <td>
-                <a href="/admin/menus/edit/'. $category->id .'" name = "edit" value = "edit" class="btn btn-success">
+                <a href="/admin/books/edit/{{  $book->id  }}" name = "edit" value = "edit" class="btn btn-success">
                 <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
 
-                <a href="/admin/menus/destroy" onclick="removeRow('. $category->id .', \'/admin/menus/destroy\')" name = "delete" value = "delete" class="btn btn-danger">
+                <a href="/admin/books/destroy" onclick="removeRow('. $book->id .', \'/admin/books/destroy\')" name = "delete" value = "delete" class="btn btn-danger">
                 <b class="mdi mdi-alert btn-icon-prepend">Xóa</b></a>
             </td>
         </tr>

@@ -54,4 +54,29 @@ class BookService{
     public function get(){
         return Book::with('category','producer','language')->orderByDesc('id')->paginate(10);
     }
+
+    public function update ($request, $book){
+        try{
+            if($request->has('file_upload')){
+                $file=$request->file_upload;
+                $file_extent=$request->file_upload->getClientOriginalExtension();
+                $file_name= time() .'_book.'.$file_extent;
+                $file->move(public_path('uploads'),$file_name);
+            }
+            $request->merge(['image'=>$file_name]);
+            $request->merge(['date_add'=>Carbon::now()]);
+            $request->except('_token');
+            // Author::create([
+            //     'name'=>(string) $request->input('author')
+            // ]);
+            $book->fill($request->input());
+            $book->save();
+            Session::flash('success', 'Cập nhật thành công');
+        }catch(\Exception $err){
+            Session::flash('error', $err->getMessage());
+            return false;
+        }
+        return true;
+        
+    }
 }

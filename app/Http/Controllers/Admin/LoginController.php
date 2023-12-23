@@ -12,7 +12,14 @@ class LoginController extends Controller
     public function index()
     {
         return view('Admin.Login',[
-            'title' => 'Admin Login'
+            'title' => 'Login'
+        ]);
+    }
+
+    public function register()
+    {
+        return view('Admin.register',[
+            'title' => 'Register'
         ]);
     }
 
@@ -25,15 +32,18 @@ class LoginController extends Controller
 
         if(Auth::attempt([
             'email'=> $request->input('email'),
-            'password'=>$request->input('password')], 
-            // 'role'=>'1';
+            'password'=>$request->input('password'),
+        ], $request->input('remember'))) 
 
-            $request->input('remember'))) 
-            {
-                return redirect()->route('admin');
-            }
+        {
+            return redirect()->route('admin');
+        }
+            
+        
 
             FacadesSession::flash('error','Email hoặc password không đúng!');
             return redirect()->back();
-        }
+        
+    }
+        
 }

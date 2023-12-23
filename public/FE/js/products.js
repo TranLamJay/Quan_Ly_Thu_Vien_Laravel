@@ -52,6 +52,7 @@ const renderProducts = async (data = []) => {
                         </btn>
                     </div>
                 </div>
+                ${product.link}
             </div>
             `
     ).join('')

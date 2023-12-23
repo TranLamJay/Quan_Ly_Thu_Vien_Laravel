@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\AuthorController as UserAuthorController;
@@ -42,13 +41,13 @@ Route::middleware('auth')
     ->name('orders.')
     ->group(function () {
     Route::get('/',[OrderController::class, 'index'])->name('index');
-    //Route::get('/',[UserBookController::class,'cart'])->name('add.to.cart');
 });
 
 
 //////////////Admin
-Route::get ('/admin/login',[LoginController::class,'index'])->name('login');
-Route::post ('/admin/login/store',[LoginController::class,'store']);
+Route::get ('/login',[LoginController::class,'index'])->name('login');
+Route::post ('/login/store',[LoginController::class,'store']);
+Route::get ('/register',[LoginController::class,'register'])->name('register');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
@@ -69,7 +68,7 @@ Route::middleware('auth')->group(function () {
             Route::get('add',[UserController::class,'create']);
             Route::post ('add', [UserController::class,'store']);
             Route::get ('list_librarian', [UserController::class,'index']);
-            Route::get ('list_readers', [UserController::class,'index']);
+            Route::get ('list_readers', [UserController::class,'index_2']);
             Route::get ('edit/{category}', [UserController::class,'show']);
             Route::post ('edit/{category}', [UserController::class,'update']);
             Route::get('destroy',[UserController::class,'destroy']);
@@ -88,8 +87,8 @@ Route::middleware('auth')->group(function () {
             Route::get('add',[BookController::class,'create']);
             Route::post ('add', [BookController::class,'store']);
             Route::get ('list', [BookController::class,'index']);
-            Route::get ('edit/{category}', [BookController::class,'show']);
-            Route::post ('edit/{category}', [BookController::class,'update']);
+            Route::get ('edit/{book}', [BookController::class,'show']);
+            Route::post ('edit/{book}', [BookController::class,'update']);
             Route::get('destroy',[BookController::class,'destroy']);
         });   
     });
