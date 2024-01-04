@@ -7,6 +7,7 @@ use App\Http\Requests\Book\BookRequest;
 use App\Http\Services\Book\BookService;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -83,8 +84,16 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $result = $this->bookService->delete($request);
+        if($result){
+            return response()->json([
+                'error'=>false,
+                'message'=>'Xóa thành công'
+            ]);
+        }
+
+        return response()->json(['error'=>true]);
     }
 }

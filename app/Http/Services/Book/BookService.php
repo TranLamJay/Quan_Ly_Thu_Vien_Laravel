@@ -79,4 +79,13 @@ class BookService{
         return true;
         
     }
+
+    public function delete($request){
+        $book = Book::where('id', $request->input('id'))->first();
+        if($book){
+            $book->delete();
+            return true;
+        }
+        return false;
+    }
 }

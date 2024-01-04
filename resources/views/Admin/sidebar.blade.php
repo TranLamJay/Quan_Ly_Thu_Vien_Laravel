@@ -31,6 +31,19 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#laguage" aria-expanded="false" aria-controls="laguage">
+        <i class="icon-book menu-icon"></i>
+        <span class="menu-title">Language</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="laguage">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/admin/languages/add">Add</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/languages/list">List</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#author" aria-expanded="false" aria-controls="author">
         <i class="icon-head menu-icon"></i>
         <span class="menu-title">Author</span>
@@ -52,8 +65,7 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="/admin/users/add">Add</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/admin/users/list_librarian">Librarian</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/admin/users/list_readers">Readers</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/users/list">List</a></li>
         </ul>
       </div>
     </li>
@@ -69,6 +81,7 @@
           <li class="nav-item"> <a class="nav-link" href="/admin/books/list">List</a></li>
         </ul>
       </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link" href="/admin/callCards/list">
         <i class="icon-paper menu-icon"></i>

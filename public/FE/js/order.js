@@ -27,9 +27,6 @@ const renderBook = async() => {
                 ${item.name}
             </td>
             <td>
-                1
-            </td>
-            <td>
                 <button class="btn btn-danger book-box__remove_book" data-id="${item.id}" type="button">xóa</button>
             </td>
         </tr>

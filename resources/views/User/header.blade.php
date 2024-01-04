@@ -18,14 +18,13 @@
 
 
     <header id="tg-header" class="tg-header tg-haslayout">
-       
         <div class="tg-middlecontainer">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <strong class="tg-logo"><a href="books"><img src="/FE/images/logo.png" alt="company name here"></a></strong>
                         <div class="tg-wishlistandcart">
-                            <div class="dropdown tg-themedropdown tg-wishlistdropdown">
+                            {{-- <div class="dropdown tg-themedropdown tg-wishlistdropdown">
                                 <a href="javascript:void(0);" id="tg-wishlisst" class="tg-btnthemedropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="tg-themebadge">3</span>
                                     <i class="icon-heart"></i>
@@ -34,7 +33,7 @@
                                 <div class="dropdown-menu tg-themedropdownmenu" aria-labelledby="tg-wishlisst">
                                     <div class="tg-description"><p>No products were added to the wishlist!</p></div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="dropdown tg-themedropdown tg-minicartdropdown">
                                 <a href="{{ route('orders.index') }}" id="tg-minicart" class="tg-btnthemedropdown">
                                     <span class="tg-themebadge count-book-in-cart"></span>
@@ -87,8 +86,10 @@
                                 </div>
                             </div>
                             <div class="tg-userlogin">
+                                @if (Auth::check())
                                 <figure><a href="javascript:void(0);"><img src="/FE/images/users/img-01.jpg" alt="image description"></a></figure>
-                                <span>Hi, John</span>
+                                <p>{{ Auth::user()->name }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -129,7 +130,12 @@
                                     </li> --}}
                                     <li><a href="/contact">Contact</a></li>
                                     <li><a href="/about">About</a></li>
-                                    <li><a href="/admin/login">Login</a></li>
+                                    @if (Auth::check())
+                                    <li><a href="/logout">Logout</a></li>
+                                    @else
+                                    <li><a href="/login">Register/Login</a></li>
+                                    @endif
+                                    
                                     {{-- <li class="menu-item-has-children current-menu-item">
                                         <a href="javascript:void(0);"><i class="icon-menu"></i></a>
                                         <ul class="sub-menu">

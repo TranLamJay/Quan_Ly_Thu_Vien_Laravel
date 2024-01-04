@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\CallCard\CallCardService;
 use App\Models\CallCard;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,20 +12,21 @@ class CallCardController extends Controller
 {
     protected $callCardService;
 
-    public function __construct(CallCard $callCardService)
+    public function __construct(CallCardService $callCardService)
     {
         $this->callCardService = $callCardService;
     }
 
     public function index()
     {
+       // dd($this->callCardService->get());
         return view("Admin.CallCard.list",["title"=> "Danh sách Phiếu mượn",
         'callCards'=>$this->callCardService->get(),
         ]);
     }
 
     public function detail(CallCard $callCard){
-        return view("Admin.CallCard.detail",["title"=> "Chi tiết phiếu mượn" . $callCard->id,
+        return view("Admin.CallCard.detail",["title"=> "Chi tiết phiếu mượn/" . $callCard->id,
         'callCards'=> $this->callCardService->get(),
         'users'=>$callCard->User()->get(),
         'detail'=>$callCard->detail()->with('book')->get(),
@@ -60,5 +62,30 @@ class CallCardController extends Controller
         ]);
 
         return redirect()->back()->with('status', 'Gia hạn thành công');
+    }
+
+    public function show(CallCard $callCard){
+        return view("Admin.CallCard.edit",["title"=> "Chỉnh sửa Phiếu mượn" . $callCard->id,
+        'callCards'=> $callCard,
+        ]);
+    }
+
+    // public function update(Request $request, CallCard $callCard)
+    // {
+    //     $this->callCardService->update($request, $callCard);
+    //     return redirect('/admin/callCards/list');
+    // }
+
+    public function destroy(Request $request)
+    {
+        $result = $this->callCardService->delete($request);
+        if($result){
+            return response()->json([
+                'error'=>false,
+                'message'=>'Xóa thành công'
+            ]);
+        }
+
+        return response()->json(['error'=>true]);
     }
 }

@@ -31,6 +31,13 @@ class User extends Authenticatable
         "role_id",
     ];
 
+    public $timestamps = false;
+
+    public function role()
+    {
+        // hàm này lấy ra theo kiểu n:1
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

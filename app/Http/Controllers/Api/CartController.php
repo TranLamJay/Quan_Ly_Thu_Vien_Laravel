@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
-    // Thêm một sản phẩm vào giỏ hàng
+    // Thêm một sách vào giỏ hàng
     public function addProductToCart(CartRequest $request) {
         DB::beginTransaction();
         $data = $request->validated();
@@ -21,19 +21,19 @@ class CartController extends Controller
                 'user_id' => $data['user_id']
             ]);
 
-            // lấy ra sản phẩm có trong giỏ hàng.
+            // lấy ra sách có trong giỏ hàng.
             $cartDetailExist = CartDetail::query()
             ->where('book_id', '=', $data['book_id'])
             ->where('cart_id', '=', $cart->id)
             ->first();
 
-            // nếu sản phẩm đã tồn tại thì trả về lỗi conflict
+            // nếu sách đã tồn tại thì trả về lỗi conflict
             if ($cartDetailExist) {
                 DB::commit();
-                return response()->json("sản phẩm đã tồn tại trong giỏ hàng", 409);
+                return response()->json("Sách đã tồn tại trong giỏ hàng", 409);
             }
 
-            // không thì tạo sản phẩm mới sau đó trả về mã tạo thành công
+            // không thì tạo sách mới sau đó trả về mã tạo thành công
             CartDetail::query()->create([
                 'book_id' => (int) $data['book_id'],
                 'cart_id' => $cart->id,
@@ -41,10 +41,10 @@ class CartController extends Controller
 
             DB::commit();
 
-            return response()->json("Thêm sản phẩm thành công", 201);
+            return response()->json("Thêm sách thành công", 201);
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json("Thêm sản phẩm thất bại", 500);
+            return response()->json("Thêm sách thất bại", 500);
         }
     }
 
@@ -55,7 +55,7 @@ class CartController extends Controller
             'user_id' => $user_id
         ]);
 
-        // lấy ra sản phẩm có trong giỏ hàng.
+        // lấy ra sách có trong giỏ hàng.
         $cartCount = CartDetail::query()
         ->where('cart_id', '=', $cart->id)
         ->count();
@@ -70,7 +70,7 @@ class CartController extends Controller
             'user_id' => $user_id
         ]);
 
-        // lấy ra sản phẩm có trong giỏ hàng.
+        // lấy ra sách có trong giỏ hàng.
         $carts = CartDetail::query()
         ->select('cart_details.*', 'book.name', 'book.image')
         ->join('book', 'book.id', '=', 'cart_details.book_id')
@@ -81,7 +81,7 @@ class CartController extends Controller
     }
 
     public function removeProductInCart($cartDetailId) {
-        // lấy ra sản phẩm có trong giỏ hàng.
+        // lấy ra sách có trong giỏ hàng.
         CartDetail::query()
         ->find($cartDetailId)
         ->delete();

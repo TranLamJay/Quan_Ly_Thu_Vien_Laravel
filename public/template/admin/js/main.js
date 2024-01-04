@@ -10,7 +10,7 @@ function removeRow(id,url){
             type:'GET',
             datatype: 'JSON',
             data: {id},
-            url: 'destroy',
+            url: url,//thay url thành 'destroy'
             success: function(result){
                 if(result.error===false){
                     alert(result.message);

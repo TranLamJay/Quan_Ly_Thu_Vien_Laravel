@@ -34,8 +34,9 @@
             <td>
                 <a href="/admin/books/edit/{{  $book->id  }}" name = "edit" value = "edit" class="btn btn-success">
                 <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
-
-                <a href="/admin/books/destroy" onclick="removeRow('. $book->id .', \'/admin/books/destroy\')" name = "delete" value = "delete" class="btn btn-danger">
+                  @csrf
+                  @method('GET')
+                <a onclick="removeRow(id = {{ $book->id }}, url='/admin/books/destroy')" href="" name = "delete" value = "delete" class="btn btn-danger">
                 <b class="mdi mdi-alert btn-icon-prepend">Xóa</b></a>
             </td>
         </tr>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CallCardController;
+use App\Http\Controllers\Admin\LanguageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
@@ -14,7 +15,7 @@ use App\Http\Controllers\User\CallCardController as UserCallCardController;
 use App\Http\Controllers\User\OrderController;
 
 /////////////User
-Route::get('/',[UserBookController::class, 'index']);
+Route::get('/',[UserBookController::class, 'index'])->name('user');;
 Route::middleware('auth')->group(function () {
     Route::get('/my-book', [UserCallCardController::class, 'myBook'])->name('my_book');
     Route::get('/request-extend/{id}', [UserCallCardController::class, 'requestExtend'])->name('requestExtend');
@@ -50,6 +51,8 @@ Route::middleware('auth')
 Route::get ('/login',[LoginController::class,'index'])->name('login');
 Route::post ('/login/store',[LoginController::class,'store']);
 Route::get ('/register',[LoginController::class,'register'])->name('register');
+Route::post ('/register/create',[LoginController::class,'create']);
+Route::get ('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
@@ -66,13 +69,21 @@ Route::middleware('auth')->group(function () {
             Route::get('destroy',[MenuController::class,'destroy']);
         });
 
+        Route::prefix('languages')->group(function () {
+            Route::get ('add', [LanguageController::class,'create']);
+            Route::post ('add', [LanguageController::class,'store']);
+            Route::get ('list', [LanguageController::class,'index']);
+            Route::get ('edit/{language}', [LanguageController::class,'show']);
+            Route::post ('edit/{language}', [LanguageController::class,'update']);
+            Route::get('destroy',[LanguageController::class,'destroy']);
+        });
+
         Route::prefix('users')->group(function () {
             Route::get('add',[UserController::class,'create']);
             Route::post ('add', [UserController::class,'store']);
-            Route::get ('list_librarian', [UserController::class,'index']);
-            Route::get ('list_readers', [UserController::class,'index_2']);
-            Route::get ('edit/{category}', [UserController::class,'show']);
-            Route::post ('edit/{category}', [UserController::class,'update']);
+            Route::get ('list', [UserController::class,'index']);
+            Route::get ('edit/{user}', [UserController::class,'show']);
+            Route::post ('edit/{user}', [UserController::class,'update']);
             Route::get('destroy',[UserController::class,'destroy']);
         });
 
@@ -80,8 +91,8 @@ Route::middleware('auth')->group(function () {
             Route::get('add',[AuthorController::class,'create']);
             Route::post ('add', [AuthorController::class,'store']);
             Route::get ('list', [AuthorController::class,'index']);
-            Route::get ('edit/{category}', [AuthorController::class,'show']);
-            Route::post ('edit/{category}', [AuthorController::class,'update']);
+            Route::get ('edit/{author}', [AuthorController::class,'show']);
+            Route::post ('edit/{author}', [AuthorController::class,'update']);
             Route::get('destroy',[AuthorController::class,'destroy']);
         });
 

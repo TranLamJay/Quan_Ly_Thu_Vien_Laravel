@@ -65,7 +65,7 @@
 												<tr>
 													<th></th>
 													<th>Sản phẩm</th>
-													<th>Số lượng</th>
+													{{-- <th>Số lượng</th> --}}
 													<th>Thao tác</th>
 												</tr>
 												<tbody class="book-box__container">

@@ -16,4 +16,13 @@ class AuthorService{
     public function get(){
         return Author::orderByDesc('id')->paginate(10);
     }
+
+    public function delete($request){
+        $author = Author::where('id', $request->input('id'))->first();
+        if($author){
+            $author->delete();
+            return true;
+        }
+        return false;
+    }
 }

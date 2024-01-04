@@ -28,4 +28,16 @@ class AuthorController extends Controller
         'authors'=>$this->authorService->get(),
     ]);
     }
+
+    public function destroy(Request $request){
+        $result = $this->authorService->delete($request);
+        if($result){
+            return response()->json([
+                'error'=>false,
+                'message'=>'Xóa thành công'
+            ]);
+        }
+
+        return response()->json(['error'=>true]);
+    }
 }

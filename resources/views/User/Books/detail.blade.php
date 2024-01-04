@@ -23,9 +23,11 @@
 					News Grid Start
 			*************************************-->
 			<div class="tg-sectionspace tg-haslayout">
+				
+				<h1 style="margin-left: 23%; margin-bottom: 2%;">Xem Chi tiết</h1>
 				<div class="container">
 					<div class="row">
-						<div id="tg-twocolumns" class="tg-twocolumns">
+						<div id="tg-details-books" class="tg-details-books">
 							<div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 pull-right">
 								<div id="tg-content" class="tg-content">
 									<div class="tg-productdetail">
@@ -41,7 +43,7 @@
 														</ul>
 														
 														<button class="tg-btn tg-active tg-btn-lg" data-prd="{{ $book->id }}}"><i class="fa fa-shopping-basket"></i>
-															Thêm vào giỏ hàng</button>
+															Mượn sách</button>
 													</div>
 												</div>
 											</div>
@@ -70,7 +72,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
+							{{-- <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 pull-left">
 								<aside id="tg-sidebar" class="tg-sidebar">
 									<div class="tg-widget tg-widgetsearch">
 										<form class="tg-formtheme tg-formsearch">
@@ -106,7 +108,7 @@
 										</div>
 									</div>
 								</aside>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				</div>

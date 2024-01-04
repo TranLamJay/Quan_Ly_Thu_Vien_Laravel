@@ -3,7 +3,8 @@
 namespace App\Http\Services\User;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class UserService{
 
@@ -12,24 +13,60 @@ class UserService{
     }
 
     public function create($request){ 
-        //try{
-            User::create([
-                "name"=>(string) $request->input('name'),
-                "email"=>(string) $request->input('email'),
-                'password'=>(string) $request->input('password'),
-                "image"=>(string) $request->input('image'),
-                "date_birth"=>(string) $request->input('date_birth'),
-                "sex"=>(string) $request->input('sex'),
-                "address"=>(string) $request->input('address'),
-                "CCCD"=>(string) $request->input('CCCD'),
-                "active"=>(string) $request->input('active'),
-            ]);
-            //request()->Session->flash('success','Tạo tài khoản thành công');
+        $request->merge(['password'=>Hash::make($request->password)]);
+        try{
+            if($request->has('file_upload')){
+                $file=$request->file_upload;
+                $file_extent=$request->file_upload->getClientOriginalExtension();
+                $file_name= time() .'_user.'.$file_extent;
+                $file->move(public_path('uploads/users'),$file_name);
+            }
+            $request->merge(['image'=>$file_name]);
+            $request->except('_token');
 
-        //}catch(\Exception $err){
-            //request()->Session->flash('error', $err->getMessage());
-            //return false;
-        //}
-        //return true;
+            User::create($request->all());
+            Session::flash('success', 'Dữ liệu đã được lưu thành công');
+
+        }catch(\Exception $err){
+            Session::flash('error', $err->getMessage());
+            return false;
+        }
+        return true;
     }
+
+    public function getUsers(){
+        return User::with('role') ->orderByDesc('id')->paginate(10);
+    }
+
+    public function update($request, $user){
+        $request->merge(['password'=>Hash::make($request->password)]);
+        try{
+            if($request->has('file_upload')){
+                $file=$request->file_upload;
+                $file_extent=$request->file_upload->getClientOriginalExtension();
+                $file_name= time() .'_user.'.$file_extent;
+                $file->move(public_path('uploads/users'),$file_name);
+            }
+            $request->merge(['image'=>$file_name]);
+            $request->except('_token');
+            $user->fill($request->input());
+            $user->save();
+            Session::flash('success', 'Cập nhật thành công');
+
+        }catch(\Exception $err){
+            Session::flash('error', $err->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function delete($request){
+        $user = User::where('id', $request->input('id'))->first();
+        if($user){
+            $user->delete();
+            return true;
+        }
+        return false;
+    }
+
 }

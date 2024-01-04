@@ -13,7 +13,7 @@
     </ul>
     @endforeach
 </div>
-<div class="callCards details" >
+{{-- <div class="callCards details" >
     <table class="table">
         <thead>
           <tr>
@@ -28,7 +28,7 @@
         <tbody>
           @foreach ($callCards as $key => $callCard)
           <tr>
-            <td>{{ $callCard->book->name ?? 'None'}}</td>
+            <td>{{ $callCard->book->image ?? 'None'}}</td>
             <td>{{ $callCard->book->name ?? 'None'}}</td>
             <td>{{ $callCard->borrowing_date }}</td>
             <td>{{ $callCard->return_date }}</td>
@@ -39,5 +39,5 @@
           
         </tbody>
       </table>
-</div>
+</div> --}}
 @endsection

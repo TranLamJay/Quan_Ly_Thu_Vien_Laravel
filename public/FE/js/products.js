@@ -47,12 +47,15 @@ const renderProducts = async (data = []) => {
                             <h3><a href="/books/${product.id}">${product.name}</a></h3>
                         </div>
                         <span class="tg-bookwriter">${product.language.type_languages}</span>
+
+                        <div >
                         <btn class="tg-btn tg-btnstyletwo tg-active add-cart-btn" data-prd="${product.id}" style="cursor: pointer">
 						    <i class="fa fa-shopping-basket"></i> <em>Add To Basket</em>
                         </btn>
+                        </div>
+
                     </div>
                 </div>
-                ${product.link}
             </div>
             `
     ).join('')
@@ -115,7 +118,7 @@ const bindingEventAddCartBtn = () => {
             const userId = userIdConstant.dataset.id
             if (!userId) {
                 alert('Bạn chưa đăng nhập')
-                location.href = '/admin/login'
+                location.href = '/login'
                 return
             }
             const productId = e.currentTarget.dataset.prd

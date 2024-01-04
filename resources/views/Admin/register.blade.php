@@ -17,7 +17,7 @@
               </div>
               <h4>QUẢN LÝ THƯ VIỆN</h4>
               @include('Admin.alert')
-              <form class="pt-3" action="/register/store" method="post">
+              <form class="pt-3" action="/register/create" method="post">
                 <div class="form-group">
                     <label for="name">UserName</label>
                     <div class="input-group">
@@ -52,25 +52,25 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="diachi">Địa chỉ</label>
+                  <label for="address">Địa chỉ</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="icon-map text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" name="diachi" class="form-control form-control-lg border-left-0" id="diachi" placeholder="Địa chỉ">
+                    <input type="text" name="address" class="form-control form-control-lg border-left-0" id="address" placeholder="Địa chỉ">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="cccd">Căn cước công dân</label>
+                  <label for="CCCD">Căn cước công dân</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="text" name="cccd" class="form-control form-control-lg border-left-0" id="cccd" placeholder="CCCD">
+                    <input type="text" name="CCCD" class="form-control form-control-lg border-left-0" id="CCCD" placeholder="CCCD">
                   </div>
                 </div>
                 <div class="my-3">

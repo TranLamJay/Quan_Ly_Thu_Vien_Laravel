@@ -63,7 +63,17 @@
 						</td>
 						<td>{{ $callCard->borrowing_date }}</td>
 						<td class="return_date">{{ $callCard->return_date }}</td>
-						<td class="status" data-status="{{ $callCard->status }}">{{ $callCard->status }}</td>
+						@if ($callCard->status==0)
+						<td class="status" data-status="{{ $callCard->status }}">Chờ xác nhận</td>
+						@elseif($callCard->status==1)
+						<td class="status" data-status="{{ $callCard->status }}">Đang mượn</td>
+						@elseif($callCard->status==-1)
+						<td class="status" data-status="{{ $callCard->status }}">Đã hủy</td>
+						@else
+						<td class="status" data-status="{{ $callCard->status }}">Đã trả</td>
+						@endif
+
+						{{-- <td class="status" data-status="{{ $callCard->status }}">{{ $callCard->status }}</td> --}}
 						<td>{{ $callCard->form }}</td>
 						<td>
 							<a href="{{ route('requestExtend', ['id'=> $callCard->id]) }}"
