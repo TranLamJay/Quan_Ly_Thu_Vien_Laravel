@@ -1,4 +1,4 @@
-import { getURLParameter, renderCountCart, setURLParameter } from "./helper.js";
+import { addBookToCart, getURLParameter, renderCountCart, setCountCart, setURLParameter } from "./helper.js";
 
 const productContainerEle = document.querySelector('.tg-products .tg-productgrid');
 
@@ -114,44 +114,10 @@ const bindingEventAddCartBtn = () => {
     const addCartBtns = document.querySelectorAll('.add-cart-btn')
     addCartBtns.forEach(addCartBtn => {
         addCartBtn.onclick = async(e) => {
-            const userIdConstant = document.getElementById('user-id-constant')
-            const userId = userIdConstant.dataset.id
-            if (!userId) {
-                alert('Bạn chưa đăng nhập')
-                location.href = '/login'
-                return
-            }
-            const productId = e.currentTarget.dataset.prd
-
-            try {
-                const response = await fetch('/api/carts/add', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        'book_id': productId,
-                        'user_id': userId,
-                    })
-                })
-
-                const data = await response.json()
-                
-                alert(data);
-                if (response.ok) {
-                    setCountCart()
-                }
-            } catch (error) {
-                alert("lỗi: " + error)
-            }
+            const bookId = e.currentTarget.dataset.prd
+            addBookToCart(bookId);
         }
     })
-}
-
-const setCountCart = async() => {
-    const userIdConstant = document.getElementById('user-id-constant')
-    const userId = userIdConstant.dataset.id
-    renderCountCart(userId)
 }
 
 const main = async () => {
