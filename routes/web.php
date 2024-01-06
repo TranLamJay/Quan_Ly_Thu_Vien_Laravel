@@ -112,7 +112,8 @@ Route::middleware('auth')->group(function () {
             Route::post ('edit/{book}', [CallCardController::class,'update']);
             Route::get('destroy',[CallCardController::class,'destroy']);
             Route::get('handle-extend/{id}', [CallCardController::class, 'handleExtend']);
-        });   
+            Route::get('handle-status/{id}', [CallCardController::class, 'handleStatus']);
+        });
     });
 });
 
