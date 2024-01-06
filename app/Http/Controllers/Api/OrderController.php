@@ -66,7 +66,8 @@ class OrderController extends Controller
                 return response()->json(['message' => "Sách {$bookFind->name} không đủ số lượng"], 422);
             }
             // dòng này để sửa thông tin về số lượng nè
-            $bookFind->update(['quantity' => $quantity]);
+            // xóa cái dòng update số lượng này đi.
+            // $bookFind->update(['quantity' => $quantity]);
         }
         // thêm tất cả các cuốn sách được mượn vào detail.
         DetailCallCard::insert($bookValues);

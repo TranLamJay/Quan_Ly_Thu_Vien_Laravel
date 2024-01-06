@@ -30,23 +30,22 @@
                         <td>{{ $callCard->id }}</td>
                         <td>{{ $callCard->borrowing_date }}</td>
                         <td>{{ $callCard->return_date }}</td>
-                        <td>{{ $callCard->status == 0 ? 'Đang mượn' : 'Đã trả' }}</td>
+                        <td>
+                            <select class="form-control select-status" data-value="{{ $callCard->status }}"
+                                data-id="{{ $callCard->id }}">
+                                <option value="0" @if ($callCard->status === 0) selected @endif>Chờ xác nhận</option>
+                                <option value="1" @if ($callCard->status === 1) selected @endif>Đang mượn</option>
+                                <option value="2" @if ($callCard->status === 2) class="d-none" selected @endif>Đã trả</option>
+                                <option value="-1" @if ($callCard->status === -1) selected @endif>Đã hủy</option>
+                            </select>
+                        </td>
                         <td>{{ $callCard->form }}</td>
                         <td>{{ $callCard->user_name }}</td>
                         <td>{{ $callCard->user_email }}</td>
                         <td>
-                            <a href="/admin/callCards/list/detail/{{ $callCard->id }}" name = "detail" value = "detail"
+                            <a href="/admin/callCards/list/detail/{{ $callCard->id }}" value = "detail"
                                 class="btn btn-success">
                                 <b class="fas fa-eye btn-icon-prepend">Chi tiết</b></a>
-
-                            @if ($callCard->status !== 0)
-                                <select class="form-control select-status" data-id="{{ $callCard->id }}">
-                                    <option value="1">Chờ xác nhận</option>
-                                    <option value="2">Xác nhận phiếu mượn</option>
-                                    <option value="-1" @if ($callCard->status === -1) selected @endif>Hủy phiếu mượn
-                                    </option>
-                                </select>
-                            @endif
 
                             @if ($callCard->extend !== 0)
                                 <select class="form-control select-extend" data-id="{{ $callCard->id }}">
@@ -56,12 +55,12 @@
                                         gia hạn</option>
                                 </select>
                             @endif
-                            <a href="/admin/callCards/edit/{{ $callCard->id }}" name = "edit" value = "edit"
+                            <a href="/admin/callCards/edit/{{ $callCard->id }}" value = "edit"
                                 class="btn btn-success">
                                 <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
 
                             <a onclick="removeRow(id = {{ $callCard->id }}, url='/admin/callCards/destroy')" href=""
-                                name = "delete" value = "delete" class="btn btn-danger">
+                                value = "delete" class="btn btn-danger">
                                 <b class="mdi mdi-alert btn-icon-prepend">Xóa</b></a>
                         </td>
                     </tr>
