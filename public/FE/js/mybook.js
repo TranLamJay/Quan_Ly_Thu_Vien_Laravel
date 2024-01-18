@@ -9,7 +9,7 @@ callCardItemElements?.forEach(callCardItem => {
     const status = +statusEle.dataset.status
     const now = new Date()
 
-    if (returnDate > now || status == 1) {
+    if (returnDate > now || status == 0 || status == 2 || status == -1) {
         extendEle.classList.add('hidden')
         return
     }
