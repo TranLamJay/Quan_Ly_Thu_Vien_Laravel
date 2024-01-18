@@ -87,7 +87,7 @@
                             </div>
                             <div class="tg-userlogin">
                                 @if (Auth::check())
-                                <figure><a href="javascript:void(0);"><img src="/FE/images/users/img-01.jpg" alt="image description"></a></figure>
+                                <figure><a href="javascript:void(0);"><img src="{{ url('/uploads/users') }}/{{ Auth::user()->image }}" alt="image description"></a></figure>
                                 <p>{{ Auth::user()->name }}</p>
                                 @endif
                             </div>

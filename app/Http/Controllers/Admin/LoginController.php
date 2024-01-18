@@ -14,9 +14,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('Admin.Login',[
-            'title' => 'Login'
-        ]);
+        return view('Admin.Login',['title' => 'Login']);
     }
 
     public function register()
@@ -50,6 +48,15 @@ class LoginController extends Controller
             'password'=>$request->input('password'),
             'role_id'=>1,
         ], $request->input('remember')))
+
+        {
+            return redirect()->route('admin');
+        }
+        elseif (Auth::attempt([
+            'email'=> $request->input('email'),
+            'password'=>$request->input('password'),
+            'role_id'=>2,
+        ], $request->input('remember'))) 
 
         {
             return redirect()->route('admin');

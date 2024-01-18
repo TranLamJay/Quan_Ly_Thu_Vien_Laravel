@@ -32,7 +32,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#laguage" aria-expanded="false" aria-controls="laguage">
-        <i class="icon-book menu-icon"></i>
+        <i class="icon-globe menu-icon"></i>
         <span class="menu-title">Language</span>
         <i class="menu-arrow"></i>
       </a>
@@ -40,6 +40,19 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="/admin/languages/add">Add</a></li>
           <li class="nav-item"> <a class="nav-link" href="/admin/languages/list">List</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#pro" aria-expanded="false" aria-controls="pro">
+        <i class="icon-printer menu-icon"></i>
+        <span class="menu-title">Producer</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="pro">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/admin/producers/add">Add</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/producers/list">List</a></li>
         </ul>
       </div>
     </li>
@@ -79,6 +92,19 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="/admin/books/add">Add</a></li>
           <li class="nav-item"> <a class="nav-link" href="/admin/books/list">List</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#viola" aria-expanded="false" aria-controls="viola">
+        <i class="icon-clipboard menu-icon"></i>
+        <span class="menu-title">Violation</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="viola">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/admin/violations/add">Add</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/violations/list">List</a></li>
         </ul>
       </div>
     </li>

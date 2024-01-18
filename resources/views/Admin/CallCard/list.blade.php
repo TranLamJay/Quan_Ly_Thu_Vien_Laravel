@@ -55,9 +55,9 @@
                                         gia hạn</option>
                                 </select>
                             @endif
-                            <a href="/admin/callCards/edit/{{ $callCard->id }}" value = "edit"
+                            {{-- <a href="/admin/callCards/edit/{{ $callCard->id }}" value = "edit"
                                 class="btn btn-success">
-                                <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
+                                <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a> --}}
 
                             <a onclick="removeRow(id = {{ $callCard->id }}, url='/admin/callCards/destroy')" href=""
                                 value = "delete" class="btn btn-danger">

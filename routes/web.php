@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CallCardController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\ProducerController;
+use App\Http\Controllers\Admin\ViolationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
@@ -15,7 +17,7 @@ use App\Http\Controllers\User\CallCardController as UserCallCardController;
 use App\Http\Controllers\User\OrderController;
 
 /////////////User
-Route::get('/',[UserBookController::class, 'index'])->name('user');;
+Route::get('/',[UserBookController::class, 'index'])->name('user');
 Route::middleware('auth')->group(function () {
     Route::get('/my-book', [UserCallCardController::class, 'myBook'])->name('my_book');
     Route::get('/request-extend/{id}', [UserCallCardController::class, 'requestExtend'])->name('requestExtend');
@@ -78,6 +80,15 @@ Route::middleware('auth')->group(function () {
             Route::get('destroy',[LanguageController::class,'destroy']);
         });
 
+        Route::prefix('producers')->group(function () {
+            Route::get ('add', [ProducerController::class,'create']);
+            Route::post ('add', [ProducerController::class,'store']);
+            Route::get ('list', [ProducerController::class,'index']);
+            Route::get ('edit/{producer}', [ProducerController::class,'show']);
+            Route::post ('edit/{producer}', [ProducerController::class,'update']);
+            Route::get('destroy',[ProducerController::class,'destroy']);
+        });
+
         Route::prefix('users')->group(function () {
             Route::get('add',[UserController::class,'create']);
             Route::post ('add', [UserController::class,'store']);
@@ -103,6 +114,15 @@ Route::middleware('auth')->group(function () {
             Route::get ('edit/{book}', [BookController::class,'show']);
             Route::post ('edit/{book}', [BookController::class,'update']);
             Route::get('destroy',[BookController::class,'destroy']);
+        });   
+
+        Route::prefix('violations')->group(function () {
+            Route::get('add',[ViolationController::class,'create']);
+            Route::post ('add', [ViolationController::class,'store']);
+            Route::get ('list', [ViolationController::class,'index']);
+            Route::get ('edit/{violation}', [ViolationController::class,'show']);
+            Route::post ('edit/{violation}', [ViolationController::class,'update']);
+            Route::get('destroy',[ViolationController::class,'destroy']);
         });   
 
         Route::prefix('callCards')->group(function () {

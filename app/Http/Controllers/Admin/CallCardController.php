@@ -132,13 +132,13 @@ class CallCardController extends Controller
         }
     }
 
-    public function show(CallCard $callCard)
-    {
-        return view("Admin.CallCard.edit", [
-            "title" => "Chỉnh sửa Phiếu mượn" . $callCard->id,
-            'callCards' => $callCard,
-        ]);
-    }
+    // public function show(CallCard $callCard)
+    // {
+    //     return view("Admin.CallCard.edit", [
+    //         "title" => "Chỉnh sửa Phiếu mượn" . $callCard->id,
+    //         'callCards' => $callCard,
+    //     ]);
+    // }
 
     // public function update(Request $request, CallCard $callCard)
     // {
