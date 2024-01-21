@@ -35,7 +35,7 @@ class UserService{
     }
 
     public function getUsers(){
-        return User::with('role') ->orderByDesc('id')->paginate(10);
+        return User::with('role') ->orderByDesc('id')->search()->paginate(10);
     }
 
     public function update($request, $user){

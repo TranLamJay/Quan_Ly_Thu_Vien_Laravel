@@ -53,5 +53,12 @@ class Book extends Model
         // hàm này lấy ra theo kiểu n:1
         return $this->belongsTo(Language::class, 'language_id', 'id');
     }
+
+    public function scopeSearch($query){
+        if($key = request()->key){
+            $query=$query->where('name', 'like', '%'.$key.'%' );
+        }
+        return $query;
+    }
     
 }

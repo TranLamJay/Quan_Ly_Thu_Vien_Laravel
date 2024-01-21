@@ -57,15 +57,18 @@ data-id="{{ auth()->id() }}" @endauth></div>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                                 <div class="tg-productcontent">
-                                                    <ul class="tg-bookscategories">
-                                                        <li><a
+                                                    <ul class="tg-bookscategories" >
+                                                        <li><a style="font-size: 20px"
                                                                 href="javascript:void(0);">{{ $book->category->name }}</a>
                                                         </li>
                                                     </ul>
                                                     <div class="tg-booktitle">
                                                         <h3>{{ $book->name }}</h3>
                                                     </div>
-                                                    <span class="tg-bookwriter">By:
+                                                    <span class="tg-bookwriter" style="
+                                                    margin-bottom: 30px;
+                                                    margin-top: 20px;
+                                                    font-size: 25px;">By:
                                                         @for ($i = 0; $i < count($book->authors); $i++)
                                                             {{ $book->authors[$i]->name }}
                                                             @if ($i < count($book->authors) - 1)
@@ -73,7 +76,7 @@ data-id="{{ auth()->id() }}" @endauth></div>
                                                             @endif
                                                         @endfor
                                                     </span>
-                                                    <div class="tg-description">
+                                                    <div class="tg-description" style="font-size: 16px">
                                                         {!! $book->content !!}
                                                     </div>
                                                 </div>

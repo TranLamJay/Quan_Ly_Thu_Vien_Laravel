@@ -57,6 +57,12 @@
       </div>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="/admin/author/list">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Author</span>
+      </a>
+    </li>
+    {{-- <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#author" aria-expanded="false" aria-controls="author">
         <i class="icon-head menu-icon"></i>
         <span class="menu-title">Author</span>
@@ -68,7 +74,7 @@
           <li class="nav-item"> <a class="nav-link" href="/admin/author/list">List</a></li>
         </ul>
       </div>
-    </li>
+    </li> --}}
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="icon-head menu-icon"></i>
@@ -112,8 +118,6 @@
       <a class="nav-link" href="/admin/callCards/list">
         <i class="icon-paper menu-icon"></i>
         <span class="menu-title">CallCard</span>
-      </a>
-    </li></span>
       </a>
     </li>
     <li class="nav-item">

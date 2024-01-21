@@ -27,8 +27,16 @@ class CallCard extends Model
     public function User(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
     public function detail(){
         return $this->hasOne(DetailCallCard::class, 'id_call_card', 'id');
+    }
+
+    public function scopeSearch($query){
+        if($key = request()->key){
+            $query=$query->where('user_name', 'like', '%'.$key.'%' );
+        }
+        return $query;
     }
     
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\CreateFormRequest;
 use App\Http\Services\Author\AuthorService;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -17,7 +18,7 @@ class AuthorController extends Controller
         return view("Admin.Authors.add",["title"=> "Thêm Tác Giả"]);
     }
 
-    public function store(CreateFormRequest $request){
+    public function store(Request $request){
         
         $result =$this->authorService->create($request);
         return redirect()->back();
@@ -28,6 +29,18 @@ class AuthorController extends Controller
         'authors'=>$this->authorService->get(),
     ]);
     }
+
+    public function show(Author $author){
+        return view("Admin.Authors.edit",["title"=> "Chỉnh sửa Tác giả" . $author->id,
+        'authors'=> $author
+    ]);
+    }
+
+    public function update(Author $author, Request $request){
+        $this-> authorService->update($author,$request);
+        return redirect('/admin/author/list');
+    }
+
 
     public function destroy(Request $request){
         $result = $this->authorService->delete($request);

@@ -1,6 +1,19 @@
 @extends('Admin.main')
 
 @section('content')
+
+<form action="" class="form-inline">
+  <div class="form-group">
+    <input class="form-control" name="key" placeholder="Search by Name: " style="width: 300px;" value="{{ old('key') }}">
+  </div>
+
+  <button type='submit' class='btn btn-primary mr-2' style="width: 60px; height: 45px; margin-left: 5px;">
+    <i class="fas fa-search">
+      Tìm
+    </i>
+  </button>
+</form>
+
 <div class="table-responsive">
     <table class="table">
       <thead>
@@ -45,5 +58,5 @@
       </tbody>
     </table>
   </div>
-  {{ $books->links() }}
+  {{ $books->appends(request()->all())->links() }}
 @endsection

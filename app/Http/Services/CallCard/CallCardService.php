@@ -23,7 +23,7 @@ class CallCardService{
     }
 
     public function get(){
-        return CallCard::orderByDesc('id')->paginate(10);
+        return CallCard::orderByDesc('id')->search()->paginate(10);
 //with('users','details_call_card', 'book')->
     }
 

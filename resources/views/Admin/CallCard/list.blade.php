@@ -1,6 +1,19 @@
 @extends('Admin.main')
 
 @section('content')
+
+<form action="" class="form-inline">
+    <div class="form-group">
+      <input class="form-control" name="key" placeholder="Search by UserName: " style="width: 300px;" value="{{ old('key') }}">
+    </div>
+  
+    <button type='submit' class='btn btn-primary mr-2' style="width: 60px; height: 45px; margin-left: 5px;">
+      <i class="fas fa-search">
+        Tìm
+      </i>
+    </button>
+</form>
+
     @if (session('status'))
         <div class="alert alert-success alert-dismissible">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -70,5 +83,5 @@
         </table>
     </div>
     <script src="{{ asset('FE/js/callcardAdmin.js') }}"></script>
-    {{ $callCards->links() }}
+    {{ $callCards->appends(request()->all())->links() }}
 @endsection

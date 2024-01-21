@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CallCardController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\ProducerController;
 use App\Http\Controllers\Admin\ViolationController;
+use App\Http\Controllers\User\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MainController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\User\BookController as UserBookController;
 use App\Http\Controllers\User\AuthorController as UserAuthorController;
 use App\Http\Controllers\User\CallCardController as UserCallCardController;
 use App\Http\Controllers\User\OrderController;
+
 
 /////////////User
 Route::get('/',[UserBookController::class, 'index'])->name('user');
@@ -26,6 +28,10 @@ Route::middleware('auth')->group(function () {
 Route::prefix('/books')->group(function () {
     Route::get('/',[UserBookController::class, 'index']);
     Route::get('/{id}',[UserBookController::class, 'detail']);
+});
+Route::prefix('/accounts')->group(function () {
+    Route::get ('edit/{user}', [AccountController::class,'show']);
+    Route::post ('edit/{user}', [AccountController::class,'update']);
 });
 
 Route::get('/contact',function () {

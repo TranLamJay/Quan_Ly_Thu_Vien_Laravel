@@ -76,7 +76,7 @@
                 <div class="my-3">
                   <button style="submit" class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" >Register</button>
                 </div>
-                <div class="mb-2 d-flex">
+                {{-- <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
                     <i class="mdi mdi-facebook mr-2"></i>
                     Facebook
@@ -85,7 +85,7 @@
                     <i class="mdi mdi-google mr-2"></i>
                     Google
                   </button>
-                </div>
+                </div> --}}
                 
                 @csrf
               </form>

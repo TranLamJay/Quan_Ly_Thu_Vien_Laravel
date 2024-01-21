@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Author;
 
+use Illuminate\Support\Facades\Session;
 use App\Models\Author;
 
 class AuthorService{
@@ -15,6 +16,19 @@ class AuthorService{
 
     public function get(){
         return Author::orderByDesc('id')->paginate(10);
+    }
+
+    public function update ($author, $request){
+        try{
+            $author->fill($request->input());
+            $author->save();
+            Session::flash('success', 'Cập nhật thành công');
+        }
+        catch(\Exception $err){
+            Session::flash('error', $err->getMessage());
+            return false;
+        }
+        return true;
     }
 
     public function delete($request){

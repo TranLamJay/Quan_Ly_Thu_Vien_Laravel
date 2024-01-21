@@ -15,7 +15,7 @@
             <td>{{ $author->id }}</td>
             <td>{{ $author->name }}</td>
             <td>
-                <a href="/admin/menus/edit/'. $category->id .'" name = "edit" value = "edit" class="btn btn-success">
+              <a href="/admin/author/edit/{{  $author->id  }}" name = "edit" value = "edit" class="btn btn-success">
                 <b class="mdi mdi-upload btn-icon-prepend">Sửa</b></a>
 
                 <a onclick="removeRow(id = {{ $author->id }}, url='/admin/author/destroy')" href="" name = "delete" value = "delete" class="btn btn-danger">

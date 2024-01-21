@@ -21,9 +21,26 @@
           </div>
     </div>
     <div class="col-xl-3 d-flex grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Số Phiếu Chờ Xác Nhận</h4>
+            <div class="row">
+              <div class="col-lg-3">
+                <p style="
+                font-size: 2rem;
+                margin-top: 30px;
+                margin-right: -100px;
+                color: red;"
+                >{{ $borrowing_load }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+    <div class="col-xl-3 d-flex grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-              <h4 class="card-title">Số Phiếu Mượn</h4>
+              <h4 class="card-title">Số Phiếu Đang Mượn</h4>
               <div class="row">
                 <div class="col-lg-3">
                   <p style="

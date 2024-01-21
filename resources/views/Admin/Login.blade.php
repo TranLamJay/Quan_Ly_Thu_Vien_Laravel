@@ -52,7 +52,7 @@
                 <div class="my-3">
                   <button class="btn btn-block btn-info btn-lg font-weight-medium auth-form-btn" >LOGIN</button>
                 </div>
-                <div class="mb-2 d-flex">
+                {{-- <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
                     <i class="mdi mdi-facebook mr-2"></i>
                     Facebook
@@ -61,7 +61,7 @@
                     <i class="mdi mdi-google mr-2"></i>
                     Google
                   </button>
-                </div>
+                </div> --}}
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="{{ route('register') }}" class="text-primary">Create</a>
                 </div>

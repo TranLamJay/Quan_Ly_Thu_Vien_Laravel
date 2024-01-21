@@ -38,6 +38,13 @@ class User extends Authenticatable
         // hàm này lấy ra theo kiểu n:1
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
+
+    public function scopeSearch($query){
+        if($key = request()->key){
+            $query=$query->where('name', 'like', '%'.$key.'%' );
+        }
+        return $query;
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -52,7 +52,7 @@ class BookService{
     }
 
     public function get(){
-        return Book::with('category','producer','language')->orderByDesc('id')->paginate(10);
+        return Book::with('category','producer','language')->orderByDesc('id')->search()->paginate(10);
     }
 
     public function update ($request, $book){
